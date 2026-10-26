@@ -1,3 +1,4 @@
+import '@/app/studio-styles';
 import CatalogBoot from '@/components/CatalogBoot';
 import Workbench from '@/components/Workbench';
 import { LocaleProvider } from '@/lib/i18n';

@@ -43,11 +43,37 @@ export async function serveAsset(assets: AssetMap, request: Request, pathname: s
         body = await inflate(bytes(asset[1]));
         whole.set(key, body);
     }
-    return new Response(request.method === 'HEAD' ? null : body, {
-        headers: {
-            'content-type': asset[0],
-            'cache-control': key.startsWith('_next/static/') ? HASHED : SHORT,
-            'content-length': String(body.byteLength),
-        },
-    });
+    const headers = {
+        'content-type': asset[0],
+        'cache-control': key.startsWith('_next/static/') ? HASHED : SHORT,
+        'accept-ranges': 'bytes',
+    };
+    const range = byteRange(request.headers.get('range'), body.byteLength);
+    if (range === 'unsatisfiable') return new Response(null, { status: 416, headers: { ...headers, 'content-range': `bytes */${body.byteLength}` } });
+    if (range) {
+        const [start, end] = range;
+        return new Response(request.method === 'HEAD' ? null : body.slice(start, end + 1), {
+            status: 206,
+            headers: { ...headers, 'content-range': `bytes ${start}-${end}/${body.byteLength}`, 'content-length': String(end - start + 1) },
+        });
+    }
+    return new Response(request.method === 'HEAD' ? null : body, { headers: { ...headers, 'content-length': String(body.byteLength) } });
+}
+
+/**
+ * One `bytes=` range of a file of `size` bytes, as [first, last] inclusive; null when there is none to honour (no
+ * header, or several ranges: the whole file answers those); 'unsatisfiable' when it starts past the end. Safari asks
+ * for `bytes=0-1` before it plays a video and refuses one whose server does not answer 206.
+ */
+function byteRange(header: string | null, size: number): [number, number] | 'unsatisfiable' | null {
+    const match = header?.match(/^bytes=(\d*)-(\d*)$/);
+    if (!match || (match[1] === '' && match[2] === '')) return null;
+    if (match[1] === '') {
+        const suffix = Math.min(Number(match[2]), size);
+        return suffix === 0 ? 'unsatisfiable' : [size - suffix, size - 1];
+    }
+    const start = Number(match[1]);
+    if (start >= size) return 'unsatisfiable';
+    const end = match[2] === '' ? size - 1 : Math.min(Number(match[2]), size - 1);
+    return end < start ? null : [start, end];
 }

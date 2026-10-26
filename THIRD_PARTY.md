@@ -39,7 +39,7 @@ Next.js, React, Three.js, React Three Fiber, drei, Zod, Lucide, jsPDF and their 
 
 ## Lumi typography
 
-Oxanium variable font by Severin Meyer, from google/fonts (`ofl/oxanium`), licensed under SIL Open Font License 1.1. The font and license are self-hosted in `public/fonts/`.
+Archivo (variable, `wdth` and `wght`) by Omnibus-Type, and Martian Mono (variable) by Evil Martians, from google/fonts (`ofl/archivo`, `ofl/martianmono`), both licensed under SIL Open Font License 1.1. Each is subset to WOFF2 and self-hosted with its license in `public/fonts/`.
 # Lumi source catalog
 
 The application now includes a curated CAD catalog from Espressif, NopSCADlib and BOSL2, plus searchable CC0 Smithsonian object metadata from Objaverse-XL. Exact revisions, transformations, original source links, asset hashes, licenses and corresponding source archives are documented in [the catalog notice](public/catalog/README.md). NopSCADlib-derived meshes and their wrapper recipes retain GPL-3.0-or-later terms; no proprietary license is asserted over those assets. BOSL2 retains BSD-2-Clause notices. Espressif retains CC-BY-SA 4.0 and its KiCad exception. Individual museum objects are included only when their metadata identifies CC0. Objaverse-XL metadata attribution and ODC-By are separate from object licensing.

@@ -1,0 +1,21 @@
+/* The studio in the sheet's type and inks (redesign/DESIGN.md): Archivo and Martian Mono, vellum and graphite, the
+   calibrated blue for what is selected. Only tokens change here; the studio's layout and controls are its own. */
+:root{
+  --ui:var(--font-vibecad),Arial,sans-serif;
+  --mono:var(--font-mono),ui-monospace,monospace;
+  --accent:#347cbb;--blue:#25609a;--accent-ink:#25609a;--accent-bg:#e3e9ee;--ok:#286b44;--bad:#b83a1b;
+  --vibecad-ink:#272927;--vibecad-muted:#5d605b;--vibecad-line:#27292733;
+  --vibecad-ui-ink:#eeece6;--vibecad-ui-panel:#f3f1eb;--vibecad-ui-raised:#e2dfd6;--vibecad-ui-line:#2729272b;
+  --vibecad-ui-text:#272927;--vibecad-ui-muted:#5d605b;--vibecad-ui-ember:#f65a35;--vibecad-ui-rose:#e2dfd6;
+  --vibecad-ui-lilac:#d6d3c9;--vibecad-ui-canvas:#eeece6;--vibecad-ui-gradient:#eeece6;
+}
+body{font-stretch:96%}
+::selection{background:#f65a3533}
+button:focus-visible,a:focus-visible{outline:2px solid #f65a35;outline-offset:3px}
+/* The studio's own surfaces on vellum: flat, graphite rules, no gradient text, the second title line in red pencil. */
+.vibecad-experience.device-studio{--ds-ink:#272927;--ds-muted:#5d605b;--ds-line:#27292733;--ds-accent:#25609a;--ds-accent-bg:#e3e9ee;--ds-paper:#eeece6;color:#272927;background:#eeece6}
+.vibecad-experience.device-studio .ds-stage,.ds-stage{background:#eeece6}
+.vibecad-experience.device-studio .ds-header,.editor-app .app-header{background:#eeece6;border-bottom:1.5px solid #272927;box-shadow:none;color:#272927}
+.vibecad-experience.device-studio .ds-brand-word{color:#272927;font-stretch:62%;text-transform:uppercase;letter-spacing:.04em}
+.vibecad-experience .fx-gallery h1,.vibecad-experience.device-studio .ds-figure-title h1{color:#272927;font-stretch:125%;font-weight:220;letter-spacing:-.035em}
+.vibecad-experience .fx-gallery h1 em,.vibecad-experience .ds-modal h2 em{color:#b83a1b;text-decoration:underline wavy #f65a35 1.5px;text-underline-offset:.2em}

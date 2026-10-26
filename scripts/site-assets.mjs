@@ -36,6 +36,7 @@ const TYPES = {
     avif: 'image/avif',
     gif: 'image/gif',
     ico: 'image/x-icon',
+    mp4: 'video/mp4',
 };
 
 /** The content type of a served file, by its extension. */

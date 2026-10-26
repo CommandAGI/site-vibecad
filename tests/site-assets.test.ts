@@ -19,7 +19,8 @@ const real = {
     'models/resistor-din0207.glb': path.join(root, 'public/models/resistor-din0207.glb'),
     'assemblies/stack-chan/parts.json': path.join(root, 'public/assemblies/stack-chan/parts.json'),
     '_next/static/chunks/studio.js': path.join(root, 'lib/studio/catalog-data/parts.json'),
-    'fonts/oxanium.ttf': path.join(root, 'public/fonts/Oxanium-Variable.ttf'),
+    'fonts/archivo.woff2': path.join(root, 'public/fonts/archivo.woff2'),
+    'media/plate-table.av1.mp4': path.join(root, 'public/media/plate-table.av1.mp4'),
 };
 
 /** A built site as scripts/build-site.mjs leaves it: pages plus the files a page loads. */
@@ -80,5 +81,24 @@ describe('the built site the host serves', () => {
         expect(await head!.text()).toBe('');
         expect(await serveAsset(assets, new Request('https://vibecad.commandagi.app/api/status'), '/api/status')).toBeNull();
         expect(await serveAsset(assets, new Request('https://vibecad.commandagi.app/models/absent.glb'), '/models/absent.glb')).toBeNull();
+    });
+
+    it('plays a video: its type, and the byte ranges Safari asks for before it plays one', async () => {
+        const url = 'https://vibecad.commandagi.app/media/plate-table.av1.mp4';
+        const original = readFileSync(real['media/plate-table.av1.mp4']);
+        const whole = await serveAsset(assets, new Request(url), '/media/plate-table.av1.mp4');
+        expect(whole?.status).toBe(200);
+        expect(whole?.headers.get('content-type')).toBe('video/mp4');
+        expect(whole?.headers.get('accept-ranges')).toBe('bytes');
+        for (const [range, start, end] of [['bytes=0-1', 0, 1], ['bytes=100-', 100, original.length - 1], ['bytes=-500', original.length - 500, original.length - 1]] as const) {
+            const part = await serveAsset(assets, new Request(url, { headers: { range } }), '/media/plate-table.av1.mp4');
+            expect(part?.status).toBe(206);
+            expect(part?.headers.get('content-range')).toBe(`bytes ${start}-${end}/${original.length}`);
+            expect(part?.headers.get('content-length')).toBe(String(end - start + 1));
+            expect(Buffer.from(await part!.arrayBuffer()).equals(original.subarray(start, end + 1))).toBe(true);
+        }
+        const past = await serveAsset(assets, new Request(url, { headers: { range: `bytes=${original.length}-` } }), '/media/plate-table.av1.mp4');
+        expect(past?.status).toBe(416);
+        expect(past?.headers.get('content-range')).toBe(`bytes */${original.length}`);
     });
 });

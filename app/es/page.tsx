@@ -1,4 +1,3 @@
-import CatalogBoot from '@/components/CatalogBoot';
-import DeviceStudio from '@/components/studio/DeviceStudio';
+import Landing from '@/components/landing/Landing';
 import { LocaleProvider } from '@/lib/i18n';
-export default function Page() { return <LocaleProvider locale="es"><CatalogBoot><DeviceStudio/></CatalogBoot></LocaleProvider>; }
+export default function Page() { return <LocaleProvider locale="es"><Landing/></LocaleProvider>; }

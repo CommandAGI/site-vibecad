@@ -1,0 +1,43 @@
+{
+  "clips": [
+    {
+      "name": "plate-table",
+      "flashes": 0,
+      "bytes": {
+        "av1.mp4": 173985,
+        "h264.mp4": 178999,
+        "webp": 19306
+      }
+    }
+  ],
+  "stills": [
+    {
+      "name": "plate-part",
+      "bytes": {
+        "640": 13106,
+        "1280": 29790
+      }
+    },
+    {
+      "name": "still-parts",
+      "bytes": {
+        "520": 5888,
+        "900": 13092
+      }
+    },
+    {
+      "name": "still-caliper",
+      "bytes": {
+        "520": 8452,
+        "900": 18784
+      }
+    },
+    {
+      "name": "still-board",
+      "bytes": {
+        "520": 11218,
+        "900": 20732
+      }
+    }
+  ]
+}

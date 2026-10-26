@@ -44,7 +44,11 @@ a provider key. `docs/MODEL.md` has the model configuration.
 
 The site is deployed on CommandAGI's site hosting at https://vibecad.commandagi.app from the `site/` folder
 (`scripts/build-site.mjs`), with the static pages exported by Next and `app.mjs` as the Worker's server module. The
-locales are `/` (English), `/es/` and `/zh-Hans/`, each a static route with the A/文 picker in the header.
+locales are `/` (English), `/es/` and `/zh-Hans/`, each a static route. `/` is the landing sheet: a drawing sheet
+whose hero is a motor bracket you turn, resize and check in the page (`components/landing/`, `lib/landing/`). The
+studio is `/studio/` (`/es/studio/`, `/zh-Hans/studio/`), Circuits `/circuits/`, the evaluation `/evaluate/`; the
+A / ES / 文 picker keeps the visitor on the same page. The design, its audit and its media are in `redesign/`
+(`DESIGN.md`, `CONTENT.md`, `NOTES.md`); `scripts/media.mjs` and `scripts/encode-media.mjs` make the media.
 
 ## Where the code came from
 

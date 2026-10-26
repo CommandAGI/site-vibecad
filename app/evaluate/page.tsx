@@ -1,3 +1,4 @@
+import '@/app/studio-styles';
 import CatalogBoot from '@/components/CatalogBoot';
 import DesignEvaluation from '@/components/studio/DesignEvaluation';
 import { LocaleProvider } from '@/lib/i18n';

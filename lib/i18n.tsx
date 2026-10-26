@@ -1,5 +1,6 @@
 'use client';
 import { createContext, useContext, type ReactNode } from 'react';
+import { landingMessages } from '@/lib/landing/messages';
 
 /**
  * The site's locales. Each locale is a static route (`/`, `/es/`, `/zh-Hans/`) rendered at build time, so a locale
@@ -19,6 +20,7 @@ export const LOCALES: { locale: Locale; label: string; path: string; lang: strin
 
 const messages: Record<Locale, Record<string, string>> = {
     en: {
+        ...landingMessages.en,
         'brand.edition': 'IDEAS. IN EVERY DIMENSION.',
         'nav.aria': 'Workspace',
         'nav.explore': 'Explore',
@@ -73,6 +75,7 @@ const messages: Record<Locale, Record<string, string>> = {
         'picker.aria': 'Language',
     },
     es: {
+        ...landingMessages.es,
         'brand.edition': 'IDEAS. EN TODAS LAS DIMENSIONES.',
         'nav.aria': 'Espacio de trabajo',
         'nav.explore': 'Explorar',
@@ -127,6 +130,7 @@ const messages: Record<Locale, Record<string, string>> = {
         'picker.aria': 'Idioma',
     },
     'zh-Hans': {
+        ...landingMessages['zh-Hans'],
         'brand.edition': '想法，在每一个维度。',
         'nav.aria': '工作区',
         'nav.explore': '探索',
