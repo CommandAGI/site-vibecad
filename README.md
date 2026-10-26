@@ -17,7 +17,8 @@ to meet before anything is built.
 - **Circuits:** derive electronic components from the Studio object, see their catalog pins, edit the connections, and
   switch between the 3D, illustration and schematic views. An unknown pin mapping stays unresolved and is said so.
 - **Build and export:** follow the assembly and wiring guide; read or download the Arduino firmware, the project JSON,
-  the bill of materials and the assembly instructions. Studio and Circuits share one saved project.
+  the bill of materials and the assembly instructions, and write the exact solids as a STEP AP214 assembly (one named
+  product per component) for CAD and CAM tools. Studio and Circuits share one saved project.
 
 ## Run it here
 

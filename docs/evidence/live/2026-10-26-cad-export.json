@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-26T22:20:00Z",
+  "url": "https://vibecad.commandagi.app",
+  "deployment": "production, from CommandAGI/site-vibecad c7bfadb",
+  "environment": "Google Chrome 156.0.8078.47 (headless=new, a fresh profile), driven through the DevTools protocol",
+  "pages": {
+    "home": { "status": 200, "pageErrors": 0, "consoleErrors": 0, "failedRequests": 0, "badResponses": 0, "title": "VibeCAD — Understand. Modify. Verify." },
+    "es": { "status": 200, "errors": 0 },
+    "zhHans": { "status": 200, "errors": 0 },
+    "circuits": { "status": 200, "errors": 0 },
+    "studio": { "status": 200, "errors": 0 }
+  },
+  "mainFlow": {
+    "from": "a blank visit at /studio/",
+    "steps": ["open Explore Desktop / 01", "Export", "CAD model"],
+    "download": "desktop-studio-01.step",
+    "bytes": 5815476,
+    "header": "ISO-10303-21",
+    "manifoldSolidBreps": 1224,
+    "distinctProductNames": 32,
+    "kernel": "@classcad/smlibwasm 0.5.0 from jsDelivr, SHA-256 checked before it ran",
+    "pageErrors": 0,
+    "consoleErrors": 0,
+    "failedRequests": 0
+  },
+  "note": "The studio's catalogue assembly exports as an exact STEP AP214 assembly: one named product per component, 1,224 boundary-representation bodies. Scanned meshes and imported models stay in the project file and the export names them."
+}

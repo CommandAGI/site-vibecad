@@ -16,9 +16,10 @@ npm run site     # next build + scripts/build-site.mjs → site/, which the depl
 commandagi sites deploy site --prod
 ```
 
-`npm run site` prints what the deploy inlines and stops if it passes the host's limit. The last build: 93 files
-(6.87 MB) embedded in a 6.30 MB `app.mjs`; a deploy inlines 6.60 MB of the host's 8.00 MB. `site/` and `out/` are not
-committed.
+`npm run site` prints what the deploy inlines and stops if it passes the host's limit. The deploy itself must be given
+the built folder (`commandagi sites deploy site --prod`): given the repository folder it runs `next build` and collects
+`out/` whole, which is already over the limit. The last build: 115 files (7.75 MB) embedded in a 7.38 MB `app.mjs`; a
+deploy inlines 7.89 MB of the host's 8.00 MB. `site/` and `out/` are not committed.
 
 Serving detail that cost a deploy on 2026-10-26: Cloudflare compresses a Worker's response itself and does not take
 the Worker's `content-encoding` at its word. A body already gzipped and marked `content-encoding: gzip` reached the
@@ -51,3 +52,16 @@ A real browser check (Chrome for Testing, headless, a fresh profile, driven thro
 - `/es/` rendered Spanish (Explorar · Estudio · Circuitos), `/zh-Hans/` rendered Chinese.
 - The studio's working chrome (Inspect, Ask VibeCAD, Sources, Review, Export and the part inspector) is still English in
   every locale; the gallery and the studio's opening copy are resolved.
+
+## Export → CAD model
+
+The studio writes its exact solids as a STEP AP214 assembly through CommandAGI's CAD kernel (`@classcad/smlibwasm`
+0.5.0). The kernel's 9.4 MB WebAssembly file cannot ride in the Worker next to 7.89 MB of pages, so the browser fetches
+the pinned published build on the first export and checks its SHA-256 before it runs (`lib/studio/exact-geometry.ts`).
+This is the site's only external fetch; a visit that never exports a CAD model never makes it. The site's own tests run
+the same kernel from `node_modules` and hold the bodies to analytic volumes and to three.js's bounds, including a
+rotated component (`tests/exact-geometry.test.ts`).
+
+Verified on the production deploy in the same browser check (`docs/evidence/live/2026-10-26-cad-export.json`): from a
+blank visit, Explore Desktop / 01 → Export → CAD model wrote `desktop-studio-01.step`, 5,815,476 bytes, `ISO-10303-21;`,
+1,224 `MANIFOLD_SOLID_BREP` bodies under 32 product names, with no page, console or request error.
