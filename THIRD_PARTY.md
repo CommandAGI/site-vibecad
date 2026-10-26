@@ -45,3 +45,12 @@ Archivo (variable, `wdth` and `wght`) by Omnibus-Type, and Martian Mono (variabl
 The application now includes a curated CAD catalog from Espressif, NopSCADlib and BOSL2, plus searchable CC0 Smithsonian object metadata from Objaverse-XL. Exact revisions, transformations, original source links, asset hashes, licenses and corresponding source archives are documented in [the catalog notice](public/catalog/README.md). NopSCADlib-derived meshes and their wrapper recipes retain GPL-3.0-or-later terms; no proprietary license is asserted over those assets. BOSL2 retains BSD-2-Clause notices. Espressif retains CC-BY-SA 4.0 and its KiCad exception. Individual museum objects are included only when their metadata identifies CC0. Objaverse-XL metadata attribution and ODC-By are separate from object licensing.
 
 The self-hosted Draco glTF decoder (`public/catalog/decoders/draco/`) is copied unmodified from Three.js 0.180.0, `examples/jsm/libs/draco/gltf`. Google Draco contributors, Apache License 2.0. Full terms are in `public/catalog/licenses/draco.txt`; source: https://github.com/google/draco. Only the WASM decoder and its wrapper are included; no third-party decoder CDN is used.
+
+## CommandAGI's CAD kernel
+
+Export → CAD model writes SMLib boundary-representation bodies as a STEP AP214 assembly, through
+`@classcad/smlibwasm` 0.5.0 (MIT; its SMLib kernel is usd-brep, Apache-2.0; TypeScript declarations under the
+package's own notices). The package is pinned in `package.json` for the tests, which run the real kernel, and the
+browser takes the same version's published build from jsDelivr (`lib/studio/exact-geometry.ts`), checked against the
+package's SHA-256 before it runs. The site does not redistribute the kernel: its 9.4 MB WebAssembly file is larger
+than the host's 8 MB inlining budget, so it is fetched only when a person exports a CAD model.
