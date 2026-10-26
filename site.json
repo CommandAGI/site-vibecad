@@ -1,0 +1,9 @@
+{
+  "v": 1,
+  "slug": "vibecad",
+  "description": "VibeCAD: describe a part, get a parametric model. Open an assembly, take it apart, change it, and check it before anything is built.",
+  "status": "active",
+  "productionBranch": "main",
+  "resources": [],
+  "domains": ["vibecad.pro", "vibecad.dev", "vibecad.space", "vibecad.xyz", "vibecad.us", "vibecad.cn"]
+}

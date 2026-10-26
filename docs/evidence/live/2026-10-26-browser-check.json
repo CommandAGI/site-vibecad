@@ -1,0 +1,55 @@
+{
+  "at": "2026-10-26T08:16:00Z",
+  "url": "https://vibecad.commandagi.app",
+  "deployment": "the production deploy after the model key was set",
+  "environment": "Chrome for Testing (Playwright chromium-1248, headless, fresh profile), CDP",
+  "pages": {
+    "home": {
+      "status": "200",
+      "pageErrors": 0,
+      "consoleErrors": 0,
+      "failedRequests": 0,
+      "badResponses": 0,
+      "title": "VibeCAD — Understand. Modify. Verify.",
+      "galleryCards": 3,
+      "localePicker": [
+        "A",
+        "ES",
+        "文"
+      ],
+      "canvases": 35
+    },
+    "es": {
+      "localized": true
+    },
+    "zhHans": {
+      "localized": true
+    },
+    "circuits": {
+      "canvases": 1
+    }
+  },
+  "mainFlow": {
+    "continuedIntoAssembly": true,
+    "askedQuestion": true,
+    "answerMs": 21000,
+    "answer": "Explain the cooling system View from the top Animate the fan ro"
+  },
+  "locales": {
+    "en": {
+      "path": "/",
+      "gallery": true
+    },
+    "es": {
+      "path": "/es/",
+      "gallery": true,
+      "galleryCopy": "CONOCE VIBECAD. ENTENDER LAS COSAS."
+    },
+    "zh-Hans": {
+      "path": "/zh-Hans/",
+      "gallery": true,
+      "galleryCopy": "认识 VIBECAD。看懂身边的东西。"
+    }
+  },
+  "evidenceMethod": "headless Chrome for Testing 156 over the DevTools protocol; a fresh profile per route; page errors, console errors and failed requests counted on every page"
+}

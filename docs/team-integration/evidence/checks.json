@@ -1,0 +1,13 @@
+{
+  "liveDurationMs": 66853,
+  "rounds": 2,
+  "models": [
+    "deepseek/deepseek-chat-v3.1",
+    "deepseek/deepseek-chat-v3.1"
+  ],
+  "status": "reviewed",
+  "finalClearanceMm": 0.8153189588437844,
+  "sampleCount": 19,
+  "undoExactlyRestoresBaseline": true,
+  "redoExactlyRestoresAcceptedExport": true
+}

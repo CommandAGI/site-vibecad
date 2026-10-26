@@ -1,0 +1,18 @@
+node_modules/
+.next/
+out/
+# What `npm run site` builds for the host: the deploy uploads it, the repository does not keep it.
+site/
+.env*
+!.env.example
+*.tsbuildinfo
+.DS_Store
+work/
+coverage/
+*.log
+.vercel/
+
+# Local development transcripts
+docs/**/*.log
+docs/**/tests.txt
+docs/**/tests-final.txt
